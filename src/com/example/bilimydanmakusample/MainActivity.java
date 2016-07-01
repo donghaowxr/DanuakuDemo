@@ -128,8 +128,8 @@ import android.widget.EditText;
 	private void initListener() {
 		btnSendText.setOnClickListener(this);
 		btnPicSend.setOnClickListener(this);
-		vvVideo.setOnPlayListener(new OnPlayStateListener() {
-			@SuppressWarnings("static-access")
+		vvVideo.setOnPlayStateListener(new OnPlayStateListener() {
+			
 			@Override
 			public void playStateListener(int state) {
 				if (state==vvVideo.STATE_PLAYING) {

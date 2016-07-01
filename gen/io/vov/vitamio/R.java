@@ -13,20 +13,29 @@ public final class R {
 		public static final int transparent = 0x7f050000;
 	}
 	public static final class drawable {
-		public static final int mediacontroller_button = 0x7f020001;
-		public static final int mediacontroller_pause = 0x7f020002;
-		public static final int mediacontroller_play = 0x7f020003;
-		public static final int scrubber_control_disabled_holo = 0x7f020004;
-		public static final int scrubber_control_focused_holo = 0x7f020005;
-		public static final int scrubber_control_normal_holo = 0x7f020006;
-		public static final int scrubber_control_pressed_holo = 0x7f020007;
-		public static final int scrubber_control_selector_holo = 0x7f020008;
-		public static final int scrubber_primary_holo = 0x7f020009;
-		public static final int scrubber_progress_horizontal_holo_dark = 0x7f02000a;
-		public static final int scrubber_secondary_holo = 0x7f02000b;
-		public static final int scrubber_track_holo_dark = 0x7f02000c;
+		public static final int danmuadd = 0x7f020000;
+		public static final int danmuclose = 0x7f020001;
+		public static final int danmusuo = 0x7f020002;
+		public static final int mediacontroller_button = 0x7f020004;
+		public static final int mediacontroller_fullscreen = 0x7f020005;
+		public static final int mediacontroller_pause = 0x7f020006;
+		public static final int mediacontroller_play = 0x7f020007;
+		public static final int scrubber_control_disabled_holo = 0x7f020008;
+		public static final int scrubber_control_focused_holo = 0x7f020009;
+		public static final int scrubber_control_normal_holo = 0x7f02000a;
+		public static final int scrubber_control_pressed_holo = 0x7f02000b;
+		public static final int scrubber_control_selector_holo = 0x7f02000c;
+		public static final int scrubber_primary_holo = 0x7f02000d;
+		public static final int scrubber_progress_horizontal_holo_dark = 0x7f02000e;
+		public static final int scrubber_secondary_holo = 0x7f02000f;
+		public static final int scrubber_track_holo_dark = 0x7f020010;
 	}
 	public static final class id {
+		public static final int btn_danmu_add = 0x7f0a000b;
+		public static final int btn_danmu_close = 0x7f0a000c;
+		public static final int btn_danmu_suo = 0x7f0a000d;
+		public static final int btn_screen = 0x7f0a000f;
+		public static final int btn_select = 0x7f0a000e;
 		public static final int mediacontroller_file_name = 0x7f0a000a;
 		public static final int mediacontroller_play_pause = 0x7f0a0006;
 		public static final int mediacontroller_seekbar = 0x7f0a0009;
@@ -35,6 +44,7 @@ public final class R {
 	}
 	public static final class layout {
 		public static final int mediacontroller = 0x7f030001;
+		public static final int mymediacontroller = 0x7f030002;
 	}
 	public static final class raw {
 		public static final int libarm = 0x7f040001;
