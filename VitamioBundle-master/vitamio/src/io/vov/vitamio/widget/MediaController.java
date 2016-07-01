@@ -17,6 +17,7 @@
 
 package io.vov.vitamio.widget;
 
+import android.R.interpolator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -97,6 +98,8 @@ public class MediaController extends FrameLayout {
   private AudioManager mAM;
   private OnShownListener mShownListener;
   private OnHiddenListener mHiddenListener;
+  private OnDanmuAddListener mDanmuAddListener;
+  private OnDanmuCloseListener mDanmuCloseListener;
   @SuppressLint("HandlerLeak")
   private Handler mHandler = new Handler() {
     @Override
@@ -164,6 +167,8 @@ public class MediaController extends FrameLayout {
       mHandler.sendEmptyMessageDelayed(SHOW_PROGRESS, 1000);
     }
   };
+private ImageButton btnDanmuAdd;
+private ImageButton btnDanmuClose;
 
   public MediaController(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -236,7 +241,8 @@ public class MediaController extends FrameLayout {
    * @return The controller view.
    */
   protected View makeControllerView() {
-    return ((LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("mediacontroller", "layout", mContext.getPackageName()), this);
+//    return ((LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("mediacontroller", "layout", mContext.getPackageName()), this);
+    return ((LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("mymediacontroller", "layout", mContext.getPackageName()), this);
   }
 
   private void initControllerView(View v) {
@@ -254,6 +260,23 @@ public class MediaController extends FrameLayout {
       }
       mProgress.setMax(1000);
     }
+    
+    btnDanmuAdd = (ImageButton) v.findViewById(getResources().getIdentifier("btn_danmu_add", "id", mContext.getPackageName()));
+    btnDanmuAdd.setOnClickListener(new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			mDanmuAddListener.DanmuAdd();
+		}
+	});
+    
+    btnDanmuClose = (ImageButton) v.findViewById(getResources().getIdentifier("btn_danmu_close", "id", mContext.getPackageName()));
+    btnDanmuClose.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			mDanmuCloseListener.DanmuClose();
+		}
+	});
 
     mEndTime = (TextView) v.findViewById(getResources().getIdentifier("mediacontroller_time_total", "id", mContext.getPackageName()));
     mCurrentTime = (TextView) v.findViewById(getResources().getIdentifier("mediacontroller_time_current", "id", mContext.getPackageName()));
@@ -387,6 +410,14 @@ public class MediaController extends FrameLayout {
   public void setOnHiddenListener(OnHiddenListener l) {
     mHiddenListener = l;
   }
+  
+  public void setOnDanmuAddListener(OnDanmuAddListener l){
+	  mDanmuAddListener=l;
+  }
+  
+  public void setOnDanmuCloseListener(OnDanmuCloseListener l){
+	  mDanmuCloseListener=l;
+  }
 
   private long setProgress() {
     if (mPlayer == null || mDragging)
@@ -482,6 +513,14 @@ public class MediaController extends FrameLayout {
 
   public interface OnHiddenListener {
     public void onHidden();
+  }
+  
+  public interface OnDanmuAddListener{
+	  public void DanmuAdd();
+  }
+  
+  public interface OnDanmuCloseListener{
+	  public void DanmuClose();
   }
 
   public interface MediaPlayerControl {
