@@ -33,15 +33,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-
 import java.lang.reflect.Method;
-
 import io.vov.vitamio.utils.Log;
 import io.vov.vitamio.utils.StringUtils;
 
@@ -100,6 +99,7 @@ public class MediaController extends FrameLayout {
   private OnHiddenListener mHiddenListener;
   private OnDanmuAddListener mDanmuAddListener;
   private OnDanmuCloseListener mDanmuCloseListener;
+  private OnScreenChangeListener mScreenChangeListener;
   @SuppressLint("HandlerLeak")
   private Handler mHandler = new Handler() {
     @Override
@@ -169,6 +169,7 @@ public class MediaController extends FrameLayout {
   };
 private ImageButton btnDanmuAdd;
 private ImageButton btnDanmuClose;
+private Button btnScreen;
 
   public MediaController(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -275,6 +276,15 @@ private ImageButton btnDanmuClose;
 		@Override
 		public void onClick(View v) {
 			mDanmuCloseListener.DanmuClose();
+		}
+	});
+    
+    btnScreen = (Button) v.findViewById(getResources().getIdentifier("btn_screen", "id", mContext.getPackageName()));
+    btnScreen.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			mScreenChangeListener.ScreenChange();
 		}
 	});
 
@@ -418,6 +428,10 @@ private ImageButton btnDanmuClose;
   public void setOnDanmuCloseListener(OnDanmuCloseListener l){
 	  mDanmuCloseListener=l;
   }
+  
+  public void setOnScreenChangeListener(OnScreenChangeListener l){
+	  mScreenChangeListener=l;
+  }
 
   private long setProgress() {
     if (mPlayer == null || mDragging)
@@ -521,6 +535,10 @@ private ImageButton btnDanmuClose;
   
   public interface OnDanmuCloseListener{
 	  public void DanmuClose();
+  }
+  
+  public interface OnScreenChangeListener{
+	  public void ScreenChange();
   }
 
   public interface MediaPlayerControl {
