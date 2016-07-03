@@ -294,6 +294,10 @@ private Button btnScreen;
     if (mFileName != null)
       mFileName.setText(mTitle);
   }
+  
+  public void changeScreenName(String name){
+	btnScreen.setText(name);  
+  }
 
   public void setMediaPlayer(MediaPlayerControl player) {
     mPlayer = player;
